@@ -10,5 +10,4 @@ int main()
 {
 	string directory=getNameOfDirectory();
     vector <student> allStudents;
-	
 }
