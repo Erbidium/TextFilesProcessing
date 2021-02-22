@@ -26,7 +26,7 @@ vector<student> processDirectoryWithStudentsData(string directory)
 		student studentData;
 		int numberOfStudent;
 		ifstream fIn(files[i]);
-		fIn>>numberOfStudent;
+		getline(fIn, studentData.lastName, ',');
 		for(int k=0;k<numberOfStudent;k++)
 		{
 			fIn>>studentData.lastName;
