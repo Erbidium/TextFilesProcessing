@@ -6,6 +6,6 @@ using namespace std;
 struct student
 {
 	string lastName;
-	float averageScore;
+	double averageScore;
 	bool isTuitionPaying;
 };
