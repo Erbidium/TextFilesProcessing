@@ -18,12 +18,11 @@ string getNameOfDirectory()
 vector<student> processDirectoryWithStudentsData(string directory)
 {
 	vector <string> files, allStudents;
-	
-	student studentData;
 	for (const auto & entry : filesystem::directory_iterator(directory))
         files.push_back(entry.path().string());
 	for(int i=0;i<files.size();i++)
 	{
+		student studentData;
 		ifstream fIn(files[i]);
 		fIn>>studentData.lastName;
 		fIn.ignore();
@@ -35,6 +34,8 @@ vector<student> processDirectoryWithStudentsData(string directory)
 			sumOfGrades+=grade;
 			fIn.ignore();
 		}
+		studentData.averageScore=sumOfGrades/5.0;
+		
 		
 	}
 }
