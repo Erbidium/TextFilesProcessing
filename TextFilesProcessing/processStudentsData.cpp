@@ -40,8 +40,12 @@ vector<student> processDirectoryWithStudentsData(string directory)
 				fIn.ignore();
 			}
 			studentData.averageScore=sumOfGrades/5.0;
-			fIn>>studentData.isTuitionPaying;
-			fIn.ignore();
+			string tuitionPaying;
+			getline(fIn, tuitionPaying, '\n');
+			if(tuitionPaying=="FALSE") 
+				studentData.isTuitionPaying=false;
+			else
+				studentData.isTuitionPaying=true;
 			allStudents.push_back(studentData);
 		}
 		fIn.close();
