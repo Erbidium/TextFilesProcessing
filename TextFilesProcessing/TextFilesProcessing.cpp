@@ -9,5 +9,6 @@ using namespace std;
 int main()
 {
 	string directory=getNameOfDirectory();
-    vector <student> allStudents;
+    vector <student> allStudents=processDirectoryWithStudentsData(directory);
+	
 }
