@@ -5,7 +5,6 @@
 #include <string>
 #include "student.h"
 
-
 using namespace std;
 
 string getNameOfDirectory()
@@ -18,6 +17,9 @@ string getNameOfDirectory()
 
 vector<student> processDirectoryWithStudentsData(string directory)
 {
+	vector <string> files;
+	for (const auto & entry : filesystem::directory_iterator(directory))
+        files.push_back(entry.path().string());
 	
 }
 
