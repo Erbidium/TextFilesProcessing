@@ -29,8 +29,7 @@ vector<student> processDirectoryWithStudentsData(string directory)
 		fIn>>numberOfStudent;
 		for(int k=0;k<numberOfStudent;k++)
 		{
-			fIn>>studentData.lastName;
-			fIn.ignore();
+			getline(fIn, studentData.lastName, ',');
 			unsigned int sumOfGrades=0;
 			for(int j=0;j<5;j++)
 			{
