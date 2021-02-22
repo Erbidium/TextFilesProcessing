@@ -39,7 +39,7 @@ vector<student> processDirectoryWithStudentsData(string directory)
 		fIn>>studentData.isTuitionPaying;
 		fIn.ignore();
 		allStudents.push_back(studentData);
-		
 	}
+	return allStudents;
 }
 
