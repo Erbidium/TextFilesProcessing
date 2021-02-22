@@ -24,21 +24,27 @@ vector<student> processDirectoryWithStudentsData(string directory)
 	for(int i=0;i<files.size();i++)
 	{
 		student studentData;
+		int numberOfStudent;
 		ifstream fIn(files[i]);
-		fIn>>studentData.lastName;
-		fIn.ignore();
-		unsigned int sumOfGrades=0;
-		for(int j=0;j<5;j++)
+		fIn>>numberOfStudent;
+		for(int k=0;k<numberOfStudent;k++)
 		{
-			int grade;
-			fIn>>grade;
-			sumOfGrades+=grade;
+			fIn>>studentData.lastName;
 			fIn.ignore();
+			unsigned int sumOfGrades=0;
+			for(int j=0;j<5;j++)
+			{
+				int grade;
+				fIn>>grade;
+				sumOfGrades+=grade;
+				fIn.ignore();
+			}
+			studentData.averageScore=sumOfGrades/5.0;
+			fIn>>studentData.isTuitionPaying;
+			fIn.ignore();
+			allStudents.push_back(studentData);
 		}
-		studentData.averageScore=sumOfGrades/5.0;
-		fIn>>studentData.isTuitionPaying;
-		fIn.ignore();
-		allStudents.push_back(studentData);
+		fIn.close();
 	}
 	return allStudents;
 }
