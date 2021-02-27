@@ -13,5 +13,5 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	string directory=getNameOfDirectory();
     vector <student> allStudents=processDirectoryWithStudentsData(directory);
-	
+	vectorSort(allStudents);
 }
