@@ -30,7 +30,7 @@ void makeOutFile(vector<student> allStudents,string directory){
 		for (int i = 0; i < allStudents.size(); i++) {
 			if (k <= (allStudents.size() * 0.4)) {
 				if (!allStudents[i].isTuitionPaying) {
-					fOut << allStudents[i].lastName << "," << allStudents[i].averageScore << "," << endl;
+					fOut << allStudents[i].lastName << "," << fixed << setprecision(3) << allStudents[i].averageScore << "," << endl;
 					k++;
 					minGrade = allStudents[i].averageScore;
 				}

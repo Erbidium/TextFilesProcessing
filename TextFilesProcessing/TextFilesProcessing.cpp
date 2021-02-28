@@ -14,8 +14,5 @@ int main()
 	string directory=getNameOfDirectory();
     vector <student> allStudents=processDirectoryWithStudentsData(directory);
 	allStudents = vectorSort(allStudents);
-	for (int i = 0; i < allStudents.size(); i++) {
-		cout << allStudents[i].averageScore << endl;
-	}
 	makeOutFile(allStudents, directory);
 }
