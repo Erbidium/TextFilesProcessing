@@ -6,6 +6,8 @@
 #include "ratingTable.h"
 #include "processStudentsData.h"
 
+
 using namespace std;
 
-void vectorSort(vector<student> allStudents);
+vector<student> vectorSort(vector<student> allStudents);
+void makeOutFile(vector<student> allStudents, string directory);

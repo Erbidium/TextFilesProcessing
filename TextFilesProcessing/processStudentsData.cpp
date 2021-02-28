@@ -39,7 +39,7 @@ vector<student> processDirectoryWithStudentsData(string directory)
 				sumOfGrades+=grade;
 				fIn.ignore();
 			}
-			studentData.averageScore=sumOfGrades/5.0;
+			studentData.averageScore = sumOfGrades / 5.0;
 			string tuitionPaying;
 			getline(fIn, tuitionPaying, '\n');
 			if(tuitionPaying=="FALSE") 

@@ -13,5 +13,9 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	string directory=getNameOfDirectory();
     vector <student> allStudents=processDirectoryWithStudentsData(directory);
-	vectorSort(allStudents);
+	allStudents = vectorSort(allStudents);
+	for (int i = 0; i < allStudents.size(); i++) {
+		cout << allStudents[i].averageScore << endl;
+	}
+	makeOutFile(allStudents, directory);
 }
