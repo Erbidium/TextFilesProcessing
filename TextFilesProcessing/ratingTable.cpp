@@ -17,6 +17,14 @@ void vectorSort(vector<student>& allStudents) {
 		}
 	}
 }
+int countBudgetStudents(const vector<student> allStudents) {
+	int countBudget = 0;
+	for (int i = 0; i < allStudents.size(); i++) {
+		if (!(allStudents[i].isTuitionPaying))
+			countBudget++;
+	}
+	return countBudget;
+}
 void makeOutFile(vector<student> allStudents,string directory){
 	ofstream fOut;
 	string finalDirectory = directory + "/result.csv";
@@ -24,13 +32,14 @@ void makeOutFile(vector<student> allStudents,string directory){
 	if (!fOut)
 	{
 		cout << "Cannot open a file \n";
-	}
+	}	
 	else 
 	{
+		int countFree = countBudgetStudents(allStudents);
 		int k = 0;
 		double minGrade = 0;
 		for (int i = 0; i < allStudents.size(); i++) {
-			if (k <= (allStudents.size() * 0.4)) {
+			if (k < static_cast<int>((countFree * 0.4))) {
 				if (!allStudents[i].isTuitionPaying) {
 					fOut << allStudents[i].lastName << "," << fixed << setprecision(3) << allStudents[i].averageScore << endl;
 					k++;
