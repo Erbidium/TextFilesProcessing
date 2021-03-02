@@ -1,9 +1,10 @@
-#include "ratingTable.h"
+#include <iostream>
 #include "student.h"
-#include "processStudentsData.h"
 #include <filesystem>
 #include <iomanip>
 #include <fstream>
+
+using namespace std;
 
 vector<student> vectorSort(vector<student> allStudents) {
 	for (int i = 0; i < allStudents.size(); i++) {
