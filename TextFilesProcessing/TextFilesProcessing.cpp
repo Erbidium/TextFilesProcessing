@@ -15,9 +15,16 @@ int main()
 	string directory=getNameOfDirectory();
 	if(filesystem::exists(directory))
 	{
-		vector <student> allStudents=processDirectoryWithStudentsData(directory);
-		allStudents = vectorSort(allStudents);
-		makeOutFile(allStudents, directory);
+		if(!filesystem::is_empty(directory))
+		{
+			vector <student> allStudents=processDirectoryWithStudentsData(directory);
+			allStudents = vectorSort(allStudents);
+			makeOutFile(allStudents, directory);
+		}
+		else
+		{
+			cout<<"Empty directory!\n";
+		}
 	}
 	else
 	{
