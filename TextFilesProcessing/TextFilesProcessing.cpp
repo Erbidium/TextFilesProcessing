@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿#include <filesystem>
+#include <iostream>
 #include <vector>
 #include <locale>
 #include "student.h"
@@ -12,7 +13,15 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	string directory=getNameOfDirectory();
-    vector <student> allStudents=processDirectoryWithStudentsData(directory);
-	allStudents = vectorSort(allStudents);
-	makeOutFile(allStudents, directory);
+	if(filesystem::exists(directory))
+	{
+		vector <student> allStudents=processDirectoryWithStudentsData(directory);
+		allStudents = vectorSort(allStudents);
+		makeOutFile(allStudents, directory);
+	}
+	else
+	{
+		cout<<"Entered the wrong path!\n";
+	}
+	return 0;
 }
