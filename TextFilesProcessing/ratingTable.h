@@ -9,5 +9,5 @@
 
 using namespace std;
 
-vector<student> vectorSort(vector<student> allStudents);
+void vectorSort(vector<student>& allStudents);
 void makeOutFile(vector<student> allStudents, string directory);

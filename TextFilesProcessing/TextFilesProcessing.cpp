@@ -16,7 +16,7 @@ int main()
 		if(!filesystem::is_empty(directory))
 		{
 			vector <student> allStudents=processDirectoryWithStudentsData(directory);
-			allStudents = vectorSort(allStudents);
+			vectorSort(allStudents);
 			makeOutFile(allStudents, directory);
 		}
 		else
