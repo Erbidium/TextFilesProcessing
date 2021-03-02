@@ -26,29 +26,36 @@ vector<student> processDirectoryWithStudentsData(string directory)
 		student studentData;
 		int numberOfStudent;
 		ifstream fIn(files[i]);
-		fIn>>numberOfStudent;
-		fIn.ignore();
-		for(int k=0;k<numberOfStudent;k++)
+		if (!fIn.is_open())
 		{
-			getline(fIn, studentData.lastName, ',');
-			unsigned int sumOfGrades=0;
-			for(int j=0;j<5;j++)
-			{
-				int grade;
-				fIn>>grade;
-				sumOfGrades+=grade;
-				fIn.ignore();
-			}
-			studentData.averageScore = sumOfGrades / 5.0;
-			string tuitionPaying;
-			getline(fIn, tuitionPaying, '\n');
-			if(tuitionPaying=="FALSE") 
-				studentData.isTuitionPaying=false;
-			else
-				studentData.isTuitionPaying=true;
-			allStudents.push_back(studentData);
+		cout << "Cannot open a file "<<endl;
 		}
-		fIn.close();
+		else
+		{
+			fIn>>numberOfStudent;
+			fIn.ignore();
+			for(int k=0;k<numberOfStudent;k++)
+			{
+				getline(fIn, studentData.lastName, ',');
+				unsigned int sumOfGrades=0;
+				for(int j=0;j<5;j++)
+				{
+					int grade;
+					fIn>>grade;
+					sumOfGrades+=grade;
+					fIn.ignore();
+				}
+				studentData.averageScore = sumOfGrades / 5.0;
+				string tuitionPaying;
+				getline(fIn, tuitionPaying, '\n');
+				if(tuitionPaying=="FALSE") 
+					studentData.isTuitionPaying=false;
+				else
+					studentData.isTuitionPaying=true;
+				allStudents.push_back(studentData);
+			}
+			fIn.close();
+		}
 	}
 	return allStudents;
 }

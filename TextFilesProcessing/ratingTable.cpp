@@ -19,12 +19,14 @@ vector<student> vectorSort(vector<student> allStudents) {
 }
 void makeOutFile(vector<student> allStudents,string directory){
 	ofstream fOut;
-	string finalDirectory = directory + "/Result.csv";
+	string finalDirectory = directory + "/result.csv";
 	fOut.open(finalDirectory);
-	if (!fOut) {
+	if (!fOut)
+	{
 		cout << "Cannot open a file \n";
 	}
-	else {
+	else 
+	{
 		int k = 0;
 		double minGrade = 0;
 		for (int i = 0; i < allStudents.size(); i++) {
@@ -36,6 +38,6 @@ void makeOutFile(vector<student> allStudents,string directory){
 				}
 			}
 		}
-		cout << "\nMinimal grade for scholarship:" << minGrade << endl;
+		cout << "\nMinimal grade for scholarship: " << minGrade << endl;
 	}
 }
