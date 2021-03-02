@@ -20,7 +20,12 @@ vector<student> processDirectoryWithStudentsData(string directory)
 	vector <string> files;
 	vector <student> allStudents;
 	for (const auto & entry : filesystem::directory_iterator(directory))
-        files.push_back(entry.path().string());
+	{
+		if(entry.path().extension()==".csv")
+		{
+			files.push_back(entry.path().string());
+		}
+	}
 	for(int i=0;i<files.size();i++)
 	{
 		student studentData;
