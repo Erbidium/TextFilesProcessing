@@ -6,4 +6,4 @@ using namespace std;
 
 void vectorSort(vector<student>& allStudents);
 int countBudgetStudents(const vector<student>& allStudents);
-void makeOutFile(vector<student> allStudents, string directory, int minimalGrade);
+void makeOutFile(vector<student> allStudents, string directory, int minimalGrade, double percentOfStudents);

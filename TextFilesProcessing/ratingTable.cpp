@@ -36,7 +36,7 @@ int countBudgetStudents(const vector<student>& allStudents) {
 	}
 	return countBudget;
 }
-void makeOutFile(vector<student> allStudents,string directory, int minimalGrade){
+void makeOutFile(vector<student> allStudents,string directory, int minimalGrade,double percentOfStudents){
 	ofstream fOut;
 	string finalDirectory = directory + "/rating.csv";
 	fOut.open(finalDirectory);
@@ -50,7 +50,7 @@ void makeOutFile(vector<student> allStudents,string directory, int minimalGrade)
 		int k = 0;
 		double minGrade = 0;
 		for (int i = 0; i < allStudents.size(); i++) {
-			if (k < static_cast<int>((countFree * 0.4))) {
+			if (k < static_cast<int>((countFree * (percentOfStudents/100)))) {
 				if ((!allStudents[i].isTuitionPaying)&&(checkStudentGradesFitToMinimal(allStudents[i], minimalGrade))) {
 					fOut << allStudents[i].lastName << "," << fixed << setprecision(3) << allStudents[i].averageScore << endl;
 					k++;
