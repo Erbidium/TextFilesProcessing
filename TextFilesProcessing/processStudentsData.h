@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-
-using namespace std;
+#include <vector>
+#include "student.h"
 
 string getNameOfDirectory();
 vector<student> processDirectoryWithStudentsData(string directory);
