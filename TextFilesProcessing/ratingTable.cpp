@@ -58,6 +58,13 @@ void makeOutFile(vector<student> allStudents,string directory, int minimalGrade,
 				}
 			}
 		}
-		cout << "\nMinimal grade for scholarship: " << minGrade << endl;
+		fOut.close();
+		if (k) {
+			cout << "\nMinimal grade for scholarship: " << minGrade << endl;
+		}
+		else {
+			cout << "There aren't any students with scholarship :((( " << endl;
+			remove(finalDirectory.c_str());
+		}
 	}
 }
