@@ -10,11 +10,11 @@ using namespace std;
 
 int main(int argc, char * argv[])
 {
-	int minimalGrade=60;
+	int minimalGradeOfSubjects=60;
 	double percentOfStudents = 40;
 	if(argc>1)
 	{
-		minimalGrade=atoi(argv[1]);
+		minimalGradeOfSubjects=atoi(argv[1]);
 	}
 	if (argc > 2)
 	{
@@ -27,7 +27,7 @@ int main(int argc, char * argv[])
 		{
 			vector <student> allStudents=processDirectoryWithStudentsData(directory);
 			vectorSort(allStudents);
-			makeOutFile(allStudents, directory, minimalGrade,percentOfStudents);
+			makeOutFile(allStudents, directory, minimalGradeOfSubjects,percentOfStudents);
 		}
 		else
 		{
