@@ -8,8 +8,13 @@
 using namespace std;
 
 
-int main()
+int main(int argc, char * argv[])
 {
+	int minimalGrade=60;
+	if(argc>1)
+	{
+		minimalGrade=atoi(argv[1]);
+	}
 	string directory=getNameOfDirectory();
 	if(filesystem::exists(directory))
 	{
@@ -17,7 +22,7 @@ int main()
 		{
 			vector <student> allStudents=processDirectoryWithStudentsData(directory);
 			vectorSort(allStudents);
-			makeOutFile(allStudents, directory);
+			makeOutFile(allStudents, directory, minimalGrade);
 		}
 		else
 		{

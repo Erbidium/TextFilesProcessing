@@ -33,10 +33,12 @@ student readOneStudentData(ifstream& fIn)
 	student studentData;
 	getline(fIn, studentData.lastName, ',');
 	unsigned int sumOfGrades=0;
+	studentData.grades.resize(5);
 	for(int j=0;j<5;j++)
 	{
 		int grade;
 		fIn>>grade;
+		studentData.grades[j]=grade;
 		sumOfGrades+=grade;
 		fIn.ignore();
 	}

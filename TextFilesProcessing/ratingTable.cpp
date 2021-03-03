@@ -17,6 +17,17 @@ void vectorSort(vector<student>& allStudents) {
 		}
 	}
 }
+
+bool checkStudentGradesFitToMinimal(const student & oneStudent, int minGrade)
+{
+	bool flag=true;
+	for(int i=0;i<oneStudent.grades.size();i++)
+	{
+		if(oneStudent.grades[i]<minGrade) flag=false;
+	}
+	return flag;
+}
+
 int countBudgetStudents(const vector<student>& allStudents) {
 	int countBudget = 0;
 	for (int i = 0; i < allStudents.size(); i++) {
@@ -25,7 +36,7 @@ int countBudgetStudents(const vector<student>& allStudents) {
 	}
 	return countBudget;
 }
-void makeOutFile(vector<student> allStudents,string directory){
+void makeOutFile(vector<student> allStudents,string directory, int minimalGrade){
 	ofstream fOut;
 	string finalDirectory = directory + "/rating.csv";
 	fOut.open(finalDirectory);
@@ -40,7 +51,7 @@ void makeOutFile(vector<student> allStudents,string directory){
 		double minGrade = 0;
 		for (int i = 0; i < allStudents.size(); i++) {
 			if (k < static_cast<int>((countFree * 0.4))) {
-				if (!allStudents[i].isTuitionPaying) {
+				if ((!allStudents[i].isTuitionPaying)&&(checkStudentGradesFitToMinimal(allStudents[i], minimalGrade))) {
 					fOut << allStudents[i].lastName << "," << fixed << setprecision(3) << allStudents[i].averageScore << endl;
 					k++;
 					minGrade = allStudents[i].averageScore;
