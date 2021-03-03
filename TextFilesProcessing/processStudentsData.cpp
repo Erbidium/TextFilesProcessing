@@ -28,13 +28,31 @@ vector <string> getNamesOfCSVFiles(string directory)
 	return files;
 }
 
+student readOneStudentData(ifstream& fIn)
+{
+	student studentData;
+	getline(fIn, studentData.lastName, ',');
+	unsigned int sumOfGrades=0;
+	for(int j=0;j<5;j++)
+	{
+		int grade;
+		fIn>>grade;
+		sumOfGrades+=grade;
+		fIn.ignore();
+	}
+	studentData.averageScore = sumOfGrades / 5.0;
+	string tuitionPaying;
+	getline(fIn, tuitionPaying, '\n');
+	studentData.isTuitionPaying=(tuitionPaying=="FALSE")?false:true;
+	return studentData;
+}
+
 vector<student> processDirectoryWithStudentsData(string directory)
 {
 	vector <string> files=getNamesOfCSVFiles(directory);
 	vector <student> allStudents;
 	for(int i=0;i<files.size();i++)
 	{
-		student studentData;
 		int numberOfStudent;
 		ifstream fIn(files[i]);
 		if (!fIn.is_open())
@@ -47,19 +65,7 @@ vector<student> processDirectoryWithStudentsData(string directory)
 			fIn.ignore();
 			for(int k=0;k<numberOfStudent;k++)
 			{
-				getline(fIn, studentData.lastName, ',');
-				unsigned int sumOfGrades=0;
-				for(int j=0;j<5;j++)
-				{
-					int grade;
-					fIn>>grade;
-					sumOfGrades+=grade;
-					fIn.ignore();
-				}
-				studentData.averageScore = sumOfGrades / 5.0;
-				string tuitionPaying;
-				getline(fIn, tuitionPaying, '\n');
-				studentData.isTuitionPaying=(tuitionPaying=="FALSE")?false:true;
+				student studentData=readOneStudentData(fIn);
 				allStudents.push_back(studentData);
 			}
 			fIn.close();
