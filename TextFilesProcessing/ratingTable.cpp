@@ -17,7 +17,7 @@ void vectorSort(vector<student>& allStudents) {
 		}
 	}
 }
-int countBudgetStudents(const vector<student> allStudents) {
+int countBudgetStudents(const vector<student>& allStudents) {
 	int countBudget = 0;
 	for (int i = 0; i < allStudents.size(); i++) {
 		if (!(allStudents[i].isTuitionPaying))
