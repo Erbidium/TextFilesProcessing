@@ -15,10 +15,9 @@ string getNameOfDirectory()
 	return directory;
 }
 
-vector<student> processDirectoryWithStudentsData(string directory)
+vector <string> getNamesOfCSVFiles(string directory)
 {
 	vector <string> files;
-	vector <student> allStudents;
 	for (const auto & entry : filesystem::directory_iterator(directory))
 	{
 		if(entry.path().extension()==".csv")
@@ -26,6 +25,13 @@ vector<student> processDirectoryWithStudentsData(string directory)
 			files.push_back(entry.path().string());
 		}
 	}
+	return files;
+}
+
+vector<student> processDirectoryWithStudentsData(string directory)
+{
+	vector <string> files=getNamesOfCSVFiles(directory);
+	vector <student> allStudents;
 	for(int i=0;i<files.size();i++)
 	{
 		student studentData;
@@ -53,10 +59,7 @@ vector<student> processDirectoryWithStudentsData(string directory)
 				studentData.averageScore = sumOfGrades / 5.0;
 				string tuitionPaying;
 				getline(fIn, tuitionPaying, '\n');
-				if(tuitionPaying=="FALSE") 
-					studentData.isTuitionPaying=false;
-				else
-					studentData.isTuitionPaying=true;
+				studentData.isTuitionPaying=(tuitionPaying=="FALSE")?false:true;
 				allStudents.push_back(studentData);
 			}
 			fIn.close();
