@@ -1,11 +1,9 @@
 #pragma once
 #include <string>
 
-using namespace std;
-
 struct student
 {
-	string lastName;
+	std::string lastName;
 	double averageScore;
 	bool isTuitionPaying;
 };
