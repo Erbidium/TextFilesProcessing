@@ -63,7 +63,7 @@ vector<student> processDirectoryWithStudentsData(string directory)
 		{
 			fIn>>numberOfStudent;
 			fIn.ignore();
-			for(int k=0;k<numberOfStudent;k++)
+			for(int k=0;((k<numberOfStudent)&&(!fIn.eof()));k++)
 			{
 				student studentData=readOneStudentData(fIn);
 				allStudents.push_back(studentData);
