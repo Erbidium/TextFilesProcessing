@@ -27,7 +27,7 @@ int countBudgetStudents(const vector<student> allStudents) {
 }
 void makeOutFile(vector<student> allStudents,string directory){
 	ofstream fOut;
-	string finalDirectory = directory + "/result.csv";
+	string finalDirectory = directory + "/rating.csv";
 	fOut.open(finalDirectory);
 	if (!fOut)
 	{
